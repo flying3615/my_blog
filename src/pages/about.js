@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "gatsby-theme-material-ui";
 import { Container, Box, Typography } from "@material-ui/core";
 import HomeIcon from '@material-ui/icons/Home';
-import Layout from "../components/layout"
+import Layout from "../container/Layout"
 
 
 export default function App() {
@@ -10,9 +10,8 @@ export default function App() {
     <Layout>
       <Box my={4}>
         <Typography variant="h4" component="h1" gutterBottom>
-          gatsby-theme-material-ui example
+          About Page
         </Typography>
-        <Link to="/"><HomeIcon style={{color:'red'}} /></Link>
       </Box>
     </Layout>
   );
