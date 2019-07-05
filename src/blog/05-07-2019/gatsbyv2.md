@@ -3,8 +3,9 @@ path: "/gatsby"
 date: 2019-07-05
 title: "Gatsby V2"
 ---
-
-![](https://source.unsplash.com/user/erondu)
+<p align="center">
+  <img alt="Gatsby" src="https://source.unsplash.com/random/800x600" />
+<h1 align="center">
 
 <p align="center">
   <a href="https://gatsbyjs.org">

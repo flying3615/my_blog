@@ -22,7 +22,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 
-export default ({ children }) => {
+export default ({ children, showFooter=true }) => {
 
     const classes = useStyles();
 
@@ -35,9 +35,12 @@ export default ({ children }) => {
                 {children}
             </main>
            
-            <footer className={classes.footer}>
+            {
+            showFooter&& <footer className={classes.footer}>
                 <Footer />
             </footer>
+            }
+
         </Container>
     )
 }
