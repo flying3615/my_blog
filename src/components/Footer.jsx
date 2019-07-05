@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Link } from "gatsby-theme-material-ui";
+import { Link } from "gatsby"
 import { Typography } from "@material-ui/core";
 import styled from "styled-components"
 import Favorite from '@material-ui/icons/Favorite';
@@ -16,7 +16,7 @@ const MadeWithLove = () => {
     return (
         <Typography variant="body2" color="textSecondary" align="center">
             {`Made with `}<Favorite style={{ color: 'red' }} />{` by the `}
-            <Link color="inherit" href="https://material-ui.com/">
+            <Link color="inherit" to="https://material-ui.com/">
                 {`Yufei`}
             </Link>
         </Typography>

@@ -1,9 +1,8 @@
 import React from "react";
-import { Link } from "gatsby-theme-material-ui";
+import { Link } from "gatsby"
 import { Container, Box, Typography } from "@material-ui/core";
 import HomeIcon from '@material-ui/icons/Home';
 import Layout from "../container/Layout"
-
 
 export default function App() {
   return (

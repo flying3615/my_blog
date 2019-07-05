@@ -4,14 +4,16 @@ import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
 import SearchIcon from '@material-ui/icons/Search';
 import Typography from '@material-ui/core/Typography';
-import { Link } from "gatsby-theme-material-ui";
 import Button from '@material-ui/core/Button';
-import { graphql, useStaticQuery } from "gatsby"
+import { graphql, useStaticQuery, Link } from "gatsby"
 
-
+// Blog siteMap
 const sections = [
-    { display: 'home', path: '/' },
-    { display: 'about', path: '/about' }
+    { display: 'Home', path: '/' },
+    { display: 'Blog', path: '/blog' },
+    { display: 'About', path: '/about' },
+    { display: 'Files', path: '/my-files' },
+
 ]
 
 const useStyles = makeStyles(theme => ({
@@ -67,15 +69,12 @@ export default () => {
                 </IconButton>
                 <Button variant="outlined" size="small">
                     Sign up
-          </Button>
+                </Button>
             </Toolbar>
             <Toolbar component="nav" variant="dense" className={classes.toolbarSecondary}>
                 {sections.map(section => (
                     <Link
-                        color="inherit"
-                        noWrap
                         key={section.display}
-                        variant="body2"
                         to={section.path}
                         className={classes.toolbarLink}
                     >
