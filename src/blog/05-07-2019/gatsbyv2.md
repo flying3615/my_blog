@@ -4,7 +4,7 @@ date: 2019-07-05
 title: "Gatsby V2"
 ---
 <p align="center">
-  <img alt="Gatsby" src="https://source.unsplash.com/random/800x600" />
+  <img alt="Gatsby" src="https://source.unsplash.com/user/erondu/1280x720" />
 <h1 align="center">
 
 <p align="center">
@@ -182,5 +182,7 @@ Thanks to our many contributors and sponsors as well as the companies sponsoring
 
 
 our testing and hosting infrastructure: [Circle CI](https://circleci.com/), [Appveyor](https://www.appveyor.com/), and [Netlify](https://www.netlify.com/).
+
+
 <iframe width="400" height="250" src="https://www.youtube.com/embed/GuvAMcsoreI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 

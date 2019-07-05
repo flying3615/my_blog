@@ -16,7 +16,7 @@ export default function Template({ data }) {
     return (
         <Layout className="blog-post-container" showFooter={false}>
             <Helmet title={`Yufei's Blog - ${post.frontmatter.title}`} />
-            <CommentCount config={disqusConfig} placeholder={'placeholder'} />
+            <CommentCount config={disqusConfig} placeholder={''} />
             <div className="blog-post">
                 <h1>{post.frontmatter.title}</h1>
                 <div
