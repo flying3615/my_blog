@@ -4,7 +4,7 @@ import { Helmet } from "react-helmet"
 import Layout from "../container/Layout";
 
 
-export default function Index({ data, context}) {
+export default function Index({ data }) {
     const { edges: posts } = data.allMarkdownRemark
     return (
         <Layout className="blog-posts">

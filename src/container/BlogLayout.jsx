@@ -1,6 +1,6 @@
 import React from "react"
 import { Helmet } from "react-helmet"
-import { graphql } from "gatsby"
+import { graphql, Link } from "gatsby"
 import Layout from "./Layout";
 import { Disqus, CommentCount } from 'gatsby-plugin-disqus'
 import Paper from '@material-ui/core/Paper'
@@ -21,9 +21,11 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-export default function Template({ data }) {
+export default function Template({ data, pageContext }) {
 
     const classes = useStyles();
+
+    const { prev, next, tags, recommend } = pageContext
 
     const { markdownRemark: post } = data
 
@@ -45,22 +47,21 @@ export default function Template({ data }) {
                 </Grid>
 
                 <Grid item xs={12}>
-                    <Divider variant="middle" />
+
+                    <Grid container justify="space-around">
+                        {prev && <Link to={prev.frontmatter.path}> Prev </Link>}
+                        {next && <Link to={next.frontmatter.path}> Next </Link>}
+                    </Grid>
                 </Grid>
 
                 <Grid item xs={12}>
                     <Grid container justify="space-around">
-                        <Grid item>
-                            <BlogCard />
-                        </Grid>
-
-                        <Grid item>
-                            <BlogCard />
-                        </Grid>
-
-                        <Grid item>
-                            <BlogCard />
-                        </Grid>
+                        {recommend && recommend.filter(rp => rp.frontmatter.title !== post.frontmatter.title)
+                            .map((post, index) => (
+                                <Grid item key={index}>
+                                    <BlogCard post={post} />
+                                </Grid>
+                            ))}
                     </Grid>
                 </Grid>
 
