@@ -2,16 +2,8 @@
 import React from 'react';
 import { Link } from "gatsby"
 import { Typography } from "@material-ui/core";
-import styled from "styled-components"
 import Favorite from '@material-ui/icons/Favorite';
-
-const StyledHr = styled.hr`
-    border:none;
-    height: 1px;
-    margin-bottom:5px;
-    background-color:rgba(0,0,0,0.15);
-`
-
+import Divider from '@material-ui/core/Divider';
 const MadeWithLove = () => {
     return (
         <Typography variant="body2" color="textSecondary" align="center">
@@ -25,7 +17,7 @@ const MadeWithLove = () => {
 
 const Footer  = () => (
     <footer>
-        <StyledHr />
+        <Divider />
         <MadeWithLove />
     </footer>
 )

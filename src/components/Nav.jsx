@@ -1,5 +1,6 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/core/styles';
+import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
 import SearchIcon from '@material-ui/icons/Search';
@@ -51,26 +52,28 @@ export default () => {
 
     return (
         <React.Fragment>
-            <Toolbar className={classes.toolbar}>
-                <Button size="small">Subscribe</Button>
-                <Typography
-                    component="h2"
-                    variant="h5"
-                    color="inherit"
-                    align="center"
-                    noWrap
-                    className={classes.toolbarTitle}
-                >
-                    {data.site.siteMetadata.title}
+            <AppBar position="static" color="primary">
+                <Toolbar className={classes.toolbar}>
+                    <Button size="small">Subscribe</Button>
+                    <Typography
+                        component="h2"
+                        variant="h5"
+                        color="inherit"
+                        align="center"
+                        noWrap
+                        className={classes.toolbarTitle}
+                    >
+                        {data.site.siteMetadata.title}
 
-                </Typography>
-                <IconButton>
-                    <SearchIcon />
-                </IconButton>
-                <Button variant="outlined" size="small">
-                    Sign up
-                </Button>
-            </Toolbar>
+                    </Typography>
+                    <IconButton>
+                        <SearchIcon />
+                    </IconButton>
+                    <Button variant="outlined" size="small">
+                        Sign up
+                    </Button>
+                </Toolbar>
+             </AppBar>
             <Toolbar component="nav" variant="dense" className={classes.toolbarSecondary}>
                 {sections.map(section => (
                     <Link

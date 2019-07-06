@@ -22,26 +22,26 @@ const useStyles = makeStyles(theme => ({
 }));
 
 
-export default ({ children, showFooter=true }) => {
+export default ({ children, showFooter = true }) => {
 
     const classes = useStyles();
 
     return (
-        <Container maxWidth="lg" className={classes.root}>
+        <div>
             <header>
                 <Navigator />
             </header>
-            <main className={classes.main} >
-                {children}
-            </main>
-           
+            <Container maxWidth="lg" className={classes.root}>
+                <main className={classes.main} >
+                    {children}
+                </main>
+            </Container>
             {
-            showFooter&& <footer className={classes.footer}>
-                <Footer />
-            </footer>
+                showFooter && <footer className={classes.footer}>
+                    <Footer />
+                </footer>
             }
-
-        </Container>
+        </div>
     )
 }
 
