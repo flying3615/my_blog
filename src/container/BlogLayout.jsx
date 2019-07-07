@@ -8,8 +8,9 @@ import Typography from '@material-ui/core/Typography'
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import BlogCard from '../components/BlogCard'
+import ArrowBack from '@material-ui/icons/ArrowBack'
+import ArrowForward from '@material-ui/icons/ArrowForward'
 
-import Divider from '@material-ui/core/Divider';
 
 const useStyles = makeStyles(theme => ({
     blogPaper: {
@@ -18,6 +19,14 @@ const useStyles = makeStyles(theme => ({
     blogCardGroup: {
         marginTop: theme.spacing(5),
         marginBottom: theme.spacing(5),
+    },
+    navLink:{
+      display: 'flex',
+      alignItems: 'center',
+      textDecoration: 'none',
+      '&:hover': {
+          textDecoration:'underline'
+      }
     }
 }));
 
@@ -49,8 +58,16 @@ export default function Template({ data, pageContext }) {
                 <Grid item xs={12}>
 
                     <Grid container justify="space-around">
-                        {prev && <Link to={prev.frontmatter.path}> Prev </Link>}
-                        {next && <Link to={next.frontmatter.path}> Next </Link>}
+                      {prev &&
+                      <Link to={prev.frontmatter.path} className={classes.navLink}>
+                          <ArrowBack/> <Typography variant="button">Prev Post</Typography>
+                      </Link>
+                      }
+                      {next &&
+                      <Link to={next.frontmatter.path} className={classes.navLink}>
+                          <Typography variant="button">Next Post</Typography> <ArrowForward/>
+                      </Link>
+                      }
                     </Grid>
                 </Grid>
 

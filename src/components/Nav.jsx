@@ -7,7 +7,6 @@ import SearchIcon from '@material-ui/icons/Search';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import { graphql, useStaticQuery, Link } from "gatsby"
-import theme from '../theme'
 
 // Blog siteMap
 const sections = [
@@ -20,19 +19,35 @@ const sections = [
 
 const useStyles = makeStyles(theme => ({
     toolbar: {
-        borderBottom: `1px solid ${theme.palette.divider}`,
+        // borderBottom: `1px solid ${theme.palette.divider}`,
     },
     toolbarTitle: {
         flex: 1,
+			  marginLeft: '1.5rem',
+			  marginRight: '1.5rem',
+
     },
     toolbarSecondary: {
-        justifyContent: 'space-between',
+        justifyContent: 'flex-start',
         overflowX: 'auto',
-    },
+			  borderBottom: `1px solid ${theme.palette.divider}`,
+        marginBottom: 10
+		},
     toolbarLink: {
-        padding: theme.spacing(1),
         flexShrink: 0,
+        height: '100%',
+        textDecoration: 'none',
+        "&:hover": {
+            borderBottom: `3px solid ${theme.palette.primary.main}`
+        }
     },
+
+	toolbarLinkActive: {
+		flexShrink: 0,
+		height: '100%',
+		textDecoration: 'none',
+    borderBottom: `3px solid ${theme.palette.primary.main}`
+  }
 }))
 
 export default () => {
@@ -51,11 +66,14 @@ export default () => {
 
     const classes = useStyles();
 
+    const isActive = (value) =>
+      (window.location.pathname===value?classes.toolbarLinkActive:classes.toolbarLink)
+
     return (
         <React.Fragment >
             <AppBar position="static" color="primary">
                 <Toolbar className={classes.toolbar}>
-                    <Button size="small">Subscribe</Button>
+                    <Button size="small" color="inherit">Subscribe</Button>
                     <Typography
                         component="h2"
                         variant="h5"
@@ -80,9 +98,16 @@ export default () => {
                     <Link
                         key={section.display}
                         to={section.path}
-                        className={classes.toolbarLink}
+                        className={isActive(section.path)}
                     >
-                        {section.display}
+                        <Typography
+                          variant="h5"
+                          align="center"
+                          noWrap
+                          className={classes.toolbarTitle}
+                        >
+                          {section.display}
+                        </Typography>
                     </Link>
                 ))}
             </Toolbar>

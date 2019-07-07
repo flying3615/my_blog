@@ -37,7 +37,7 @@ const useStyles = makeStyles({
   }
 });
 
-export default function Index({ data }) {
+export default function Blog({ data }) {
   const { edges: posts } = data.allMarkdownRemark
 
   const classes = useStyles();
@@ -50,7 +50,7 @@ export default function Index({ data }) {
             .map(({ node: post }) => {
               return (
                 <Grid item xs={12} key={post.id}>
-                  <Paper href={post.frontmatter.path} className="blog-post-preview" className={classes.cardAction}>
+                  <Paper href={post.frontmatter.path} className={classes.cardAction}>
                     <Link to={post.frontmatter.path} className={classes.link}>
 
                       <Grid container spacing={2}>

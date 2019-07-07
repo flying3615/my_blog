@@ -2,7 +2,7 @@ import React from "react";
 import {Box, Typography } from "@material-ui/core";
 import Layout from "../container/Layout"
 
-export default function App() {
+export default function Index() {
 
   return (
       <Layout>
