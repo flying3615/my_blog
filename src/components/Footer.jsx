@@ -16,10 +16,10 @@ const MadeWithLove = () => {
 }
 
 const Footer  = () => (
-    <footer>
-        <Divider />
+    <React.Fragment>
+        <Divider variant="middle" />
         <MadeWithLove />
-    </footer>
+    </React.Fragment>
 )
 
 export default Footer

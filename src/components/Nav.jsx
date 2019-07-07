@@ -7,6 +7,7 @@ import SearchIcon from '@material-ui/icons/Search';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import { graphql, useStaticQuery, Link } from "gatsby"
+import theme from '../theme'
 
 // Blog siteMap
 const sections = [
@@ -51,7 +52,7 @@ export default () => {
     const classes = useStyles();
 
     return (
-        <React.Fragment>
+        <React.Fragment >
             <AppBar position="static" color="primary">
                 <Toolbar className={classes.toolbar}>
                     <Button size="small">Subscribe</Button>
@@ -73,7 +74,7 @@ export default () => {
                         Sign up
                     </Button>
                 </Toolbar>
-             </AppBar>
+            </AppBar>
             <Toolbar component="nav" variant="dense" className={classes.toolbarSecondary}>
                 {sections.map(section => (
                     <Link

@@ -3,6 +3,8 @@ import { Container } from "@material-ui/core";
 import { makeStyles } from '@material-ui/core/styles';
 import Footer from '../components/Footer';
 import Navigator from '../components/Nav'
+import theme from "../theme"
+import { MuiThemeProvider } from '@material-ui/core/styles';
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -11,7 +13,7 @@ const useStyles = makeStyles(theme => ({
         minHeight: '100vh',
     },
     main: {
-        marginTop: theme.spacing(8),
+        marginTop: theme.spacing(2),
         marginBottom: theme.spacing(2),
     },
     footer: {
@@ -27,7 +29,7 @@ export default ({ children, showFooter = true }) => {
     const classes = useStyles();
 
     return (
-        <div>
+        <MuiThemeProvider theme={theme} style={{padding:0}}>
             <header>
                 <Navigator />
             </header>
@@ -41,7 +43,7 @@ export default ({ children, showFooter = true }) => {
                     <Footer />
                 </footer>
             }
-        </div>
+        </MuiThemeProvider>
     )
 }
 
