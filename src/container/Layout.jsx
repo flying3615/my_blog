@@ -5,6 +5,7 @@ import Footer from '../components/Footer';
 import Navigator from '../components/Nav'
 import theme from "../theme"
 import { MuiThemeProvider } from '@material-ui/core/styles';
+import CssBaseline from '@material-ui/core/CssBaseline'
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -19,7 +20,7 @@ const useStyles = makeStyles(theme => ({
     footer: {
         padding: theme.spacing(2),
         marginTop: 'auto',
-        backgroundColor: 'white',
+        borderTop: '1px solid rgba(7,94,115,0.3)'
     },
 }));
 
@@ -29,7 +30,8 @@ export default ({ children, showFooter = true }) => {
     const classes = useStyles();
 
     return (
-        <MuiThemeProvider theme={theme} style={{padding:0}}>
+        <MuiThemeProvider theme={theme}>
+            <CssBaseline />
             <header>
                 <Navigator />
             </header>

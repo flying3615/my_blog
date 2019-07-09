@@ -6,7 +6,7 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(theme => ({
 
     cardAction: {
         "&:hover": {
@@ -18,6 +18,7 @@ const useStyles = makeStyles({
     card: {
         maxWidth: 350,
         display: 'flex',
+        backgroundColor: theme.palette.background.blog
     },
     cardDetails: {
         flex: 1,
@@ -25,7 +26,7 @@ const useStyles = makeStyles({
     cardMedia: {
         width: 100,
     },
-});
+}));
 
 export default function BlogCard({post}) {
 

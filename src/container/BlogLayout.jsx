@@ -4,9 +4,10 @@ import { graphql, Link } from "gatsby"
 import Layout from "./Layout";
 import { Disqus, CommentCount } from 'gatsby-plugin-disqus'
 import Paper from '@material-ui/core/Paper'
+import Chip from '@material-ui/core/Chip'
 import Typography from '@material-ui/core/Typography'
-import { makeStyles } from '@material-ui/core/styles';
-import Grid from '@material-ui/core/Grid';
+import { makeStyles } from '@material-ui/core/styles'
+import Grid from '@material-ui/core/Grid'
 import BlogCard from '../components/BlogCard'
 import ArrowBack from '@material-ui/icons/ArrowBack'
 import ArrowForward from '@material-ui/icons/ArrowForward'
@@ -15,6 +16,7 @@ import ArrowForward from '@material-ui/icons/ArrowForward'
 const useStyles = makeStyles(theme => ({
     blogPaper: {
         padding: theme.spacing(5),
+        backgroundColor: theme.palette.background.blog
     },
     blogCardGroup: {
         marginTop: theme.spacing(5),
@@ -27,6 +29,9 @@ const useStyles = makeStyles(theme => ({
       '&:hover': {
           textDecoration:'underline'
       }
+    },
+    chip: {
+        margin: theme.spacing(1)
     }
 }));
 
@@ -52,6 +57,9 @@ export default function Template({ data, pageContext }) {
 
                 <Grid item xs={12}>
                     <Typography align="center" Typography variant="h3" gutterBottom>{post.frontmatter.title}</Typography>
+                    {tags.map(t=>(
+                        <Chip label={t} className={classes.chip} clickable component="a" href="/blog" />
+                    ))}
                     <Paper className={classes.blogPaper} dangerouslySetInnerHTML={{ __html: post.html }} />
                 </Grid>
 
@@ -92,8 +100,8 @@ export default function Template({ data, pageContext }) {
 }
 
 export const pageQuery = graphql`
-  query BlogPostByPath($path: String!) {
-    markdownRemark(frontmatter: { path: { eq: $path } }) {
+  query BlogPostByPath($pathSlug: String!) {
+    markdownRemark(frontmatter: { path: { eq: $pathSlug } }) {
       html
       frontmatter {
         date(formatString: "MMMM DD, YYYY")

@@ -20,7 +20,8 @@ const theme = createMuiTheme({
             main: red.A400,
         },
         background: {
-            default: '#fff',
+            default: '#F0EDE3',
+            blog: '#F9F8F4'
         },
         divider: '#f0f0f2'
     },

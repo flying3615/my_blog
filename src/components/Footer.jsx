@@ -4,6 +4,8 @@ import { Link } from "gatsby"
 import { Typography } from "@material-ui/core";
 import Favorite from '@material-ui/icons/Favorite';
 import Divider from '@material-ui/core/Divider';
+
+
 const MadeWithLove = () => {
     return (
         <Typography variant="body2" color="textSecondary" align="center">

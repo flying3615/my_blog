@@ -3,7 +3,15 @@ const path = require("path")
 exports.createPages = ({ actions, graphql }) => {
   const { createPage } = actions
 
-  const blogPostTemplate = path.resolve(`src/container/BlogLayout.jsx`)
+  const aboutTemplate = path.resolve(`src/template/about.jsx`)
+  //create about page
+  createPage({
+    path: '/about',
+    component: aboutTemplate,
+    context: {
+      title: "resume" //will be used as a graphql query variable in the component page
+    },
+  })
 
   return graphql(`
     {
@@ -46,20 +54,23 @@ exports.createPages = ({ actions, graphql }) => {
     })
 
     const tags = Object.keys(postsByTag)
+    const blogPostTemplate = path.resolve(`src/container/BlogLayout.jsx`)
 
-    posts.forEach(({ node }, index) => {
+    posts.filter(({ node }) => node.frontmatter.path)
+      .forEach(({ node }, index) => {
 
-      createPage({
-        path: node.frontmatter.path,
-        component: blogPostTemplate,
-        context: {
-          prev: index === 0 ? null : posts[index - 1].node,
-          next: index === (posts.length - 1) ? null : posts[index + 1].node,
-          tags: tags.sort(),
-          recommend: postsByTag[node.frontmatter.tags[0]]
-        },
+        createPage({
+          path: node.frontmatter.path,
+          component: blogPostTemplate,
+          context: {
+            pathSlug: node.frontmatter.path,
+            prev: index === 0 ? null : posts[index - 1].node,
+            next: index === (posts.length - 1) ? null : posts[index + 1].node,
+            tags: tags.sort(),
+            recommend: postsByTag[node.frontmatter.tags[0]]
+          },
+        })
       })
-    })
 
     //create tags
     // tags.forEach(tagName => {
