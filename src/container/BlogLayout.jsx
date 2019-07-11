@@ -57,9 +57,11 @@ export default function Template({ data, pageContext }) {
 
                 <Grid item xs={12}>
                     <Typography align="center" Typography variant="h3" gutterBottom>{post.frontmatter.title}</Typography>
+
                     {tags.map(t=>(
                         <Chip label={t} className={classes.chip} clickable component="a" href="/blog" />
                     ))}
+                    <Typography align="center" Typography variant="h6" gutterBottom>{post.timeToRead} mins to read</Typography>
                     <Paper className={classes.blogPaper} dangerouslySetInnerHTML={{ __html: post.html }} />
                 </Grid>
 
@@ -103,6 +105,7 @@ export const pageQuery = graphql`
   query BlogPostByPath($pathSlug: String!) {
     markdownRemark(frontmatter: { path: { eq: $pathSlug } }) {
       html
+      timeToRead
       frontmatter {
         date(formatString: "MMMM DD, YYYY")
         path

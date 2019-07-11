@@ -14,7 +14,7 @@ const sections = [
     { display: 'Blog', path: '/blog' },
     { display: 'About', path: '/about' },
     { display: 'Files', path: '/my-files' },
-
+    { display: 'Search', path: '/searchResult?q=Yufei' },
 ]
 
 const useStyles = makeStyles(theme => ({

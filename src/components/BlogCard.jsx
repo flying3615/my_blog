@@ -51,7 +51,6 @@ export default function BlogCard({post}) {
                         Continue reading...
                         </Typography>
                 </CardContent>
-                
             </Card>
         </CardActionArea>
            
