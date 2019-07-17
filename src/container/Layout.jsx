@@ -4,8 +4,12 @@ import { makeStyles, MuiThemeProvider } from '@material-ui/core/styles'
 import Footer from '../components/Footer'
 import Navigator from '../components/Nav'
 import theme from '../theme'
-
+import Search from '../components/search'
 import CssBaseline from '@material-ui/core/CssBaseline'
+
+const searchIndices = [
+  { name: `Posts`, title: `Blog Posts`, hitComp: `PostHit` }
+]
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -32,6 +36,7 @@ export default ({ children, showFooter = true }) => {
       <CssBaseline />
       <header>
         <Navigator />
+        <Search collapse indices={searchIndices} />
       </header>
       <Container maxWidth="lg" className={classes.root}>
         <main className={classes.main} >

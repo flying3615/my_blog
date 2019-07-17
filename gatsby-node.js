@@ -1,16 +1,16 @@
-const path = require("path")
+const path = require('path')
 
 exports.createPages = ({ actions, graphql }) => {
   const { createPage } = actions
 
   const aboutTemplate = path.resolve(`src/template/about.jsx`)
-  //create about page
+  // create about page
   createPage({
     path: '/about',
     component: aboutTemplate,
     context: {
-      title: "resume" //will be used as a graphql query variable in the component page
-    },
+      title: 'resume' // will be used as a graphql query variable in the component page
+    }
   })
 
   return graphql(`
@@ -40,7 +40,7 @@ exports.createPages = ({ actions, graphql }) => {
 
     const posts = result.data.allMarkdownRemark.edges
 
-    let postsByTag = {}
+    const postsByTag = {}
 
     posts.forEach(({ node }) => {
       if (node.frontmatter.tags) {
@@ -58,7 +58,6 @@ exports.createPages = ({ actions, graphql }) => {
 
     posts.filter(({ node }) => node.frontmatter.path)
       .forEach(({ node }, index) => {
-
         createPage({
           path: node.frontmatter.path,
           component: blogPostTemplate,
@@ -68,11 +67,11 @@ exports.createPages = ({ actions, graphql }) => {
             next: index === (posts.length - 1) ? null : posts[index + 1].node,
             tags: tags.sort(),
             recommend: postsByTag[node.frontmatter.tags[0]]
-          },
+          }
         })
       })
 
-    //create tags
+    // create tags
     // tags.forEach(tagName => {
 
     //   const posts = postsByTag[tagName]
@@ -86,7 +85,5 @@ exports.createPages = ({ actions, graphql }) => {
     //     }
     //   })
     // })
-
-
   })
 }

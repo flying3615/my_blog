@@ -3,10 +3,11 @@ import { makeStyles } from '@material-ui/core/styles'
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
 import IconButton from '@material-ui/core/IconButton'
-import SearchIcon from '@material-ui/icons/Search'
 import Typography from '@material-ui/core/Typography'
 import Button from '@material-ui/core/Button'
 import { graphql, useStaticQuery, Link } from 'gatsby'
+import window from 'global'
+
 
 // Blog siteMap
 const sections = [
@@ -14,7 +15,7 @@ const sections = [
   { display: 'Blog', path: '/blog' },
   { display: 'About', path: '/about' },
   { display: 'Files', path: '/my-files' },
-  { display: 'Search', path: '/searchResult?q=Yufei' },
+  { display: 'Search', path: '/searchResult?q=Yufei' }
 ]
 
 const useStyles = makeStyles(theme => ({
@@ -24,7 +25,7 @@ const useStyles = makeStyles(theme => ({
   toolbarTitle: {
     flex: 1,
     marginLeft: '1.5rem',
-    marginRight: '1.5rem',
+    marginRight: '1.5rem'
   },
   toolbarSecondary: {
     justifyContent: 'flex-start',
@@ -50,7 +51,6 @@ const useStyles = makeStyles(theme => ({
 }))
 
 export default () => {
-
   const data = useStaticQuery(
     graphql`
             query {
@@ -66,7 +66,7 @@ export default () => {
   const classes = useStyles()
 
   const isActive = (value) =>
-    (window.location.pathname === value ? classes.toolbarLinkActive : classes.toolbarLink)
+    (window.location && window.location.pathname === value ? classes.toolbarLinkActive : classes.toolbarLink)
 
   return (
     <React.Fragment >
@@ -84,9 +84,6 @@ export default () => {
             {data.site.siteMetadata.title}
 
           </Typography>
-          <IconButton>
-            <SearchIcon />
-          </IconButton>
           <Button variant="outlined" size="small">
                         Sign up
           </Button>
