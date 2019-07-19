@@ -74,7 +74,6 @@ export default () => {
     <React.Fragment >
       <AppBar position="static" color="primary">
         <Toolbar className={classes.toolbar}>
-          <Button size="small" color="inherit">Subscribe</Button>
           <Typography
             component="h2"
             variant="h5"

@@ -55,22 +55,20 @@ export default function Search ({ indices, collapse, hitsAsGrid }) {
       <CssBaseline />
       <Input onFocus={() => setFocus(true)} {...{ collapse, focus }} />
 
-      <div style={show} className='WTF'>
-        <HitsWrapper asGrid={hitsAsGrid}>
-          {indices.map(({ name, title, hitComp }) => (
-            <Index key={name} indexName={name}>
-              <header>
-                <h3>{title}</h3>
-                <Stats />
-              </header>
-              <Results>
-                <Hits hitComponent={hitComps[hitComp](() => setFocus(false))} />
-              </Results>
-            </Index>
-          ))}
-          <PoweredBy />
-        </HitsWrapper>
-      </div>
+      <HitsWrapper asGrid={hitsAsGrid} style={show} >
+        {indices.map(({ name, title, hitComp }) => (
+          <Index key={name} indexName={name}>
+            <header>
+              <h3>{title}</h3>
+              <Stats />
+            </header>
+            <Results>
+              <Hits hitComponent={hitComps[hitComp](() => setFocus(false))} />
+            </Results>
+          </Index>
+        ))}
+        <PoweredBy />
+      </HitsWrapper>
 
     </InstantSearch>
   )

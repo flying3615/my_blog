@@ -7,7 +7,7 @@ import { Tags } from 'styled-icons/fa-solid/Tags'
 // clickHandler is setFocus(false) to close the result list and return a component
 export const PostHit = clickHandler => ({ hit }) => (
   <div>
-    <Link to={`/blog` + hit.slug} onClick={clickHandler}>
+    <Link to={hit.path} onClick={clickHandler}>
       <h4>
         <Highlight attribute="title" hit={hit} tagName="mark" />
       </h4>

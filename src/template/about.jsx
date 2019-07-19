@@ -1,7 +1,7 @@
 import React from 'react';
-import { Container, Box, Paper } from '@material-ui/core';
+import { Box, Paper } from '@material-ui/core';
 import Layout from '../container/Layout'
-import { graphql, Link } from 'gatsby'
+import { graphql} from 'gatsby'
 import { makeStyles } from '@material-ui/core/styles'
 
 const useStyles = makeStyles(theme => ({
