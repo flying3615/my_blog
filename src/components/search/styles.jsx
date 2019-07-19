@@ -68,11 +68,10 @@ export const Form = styled.form`
 `
 
 export const HitsWrapper = styled.div`
-  display: ${props => (props.show ? `grid` : `none`)};
   background-color: blue;
   max-height: 80vh;
   overflow: scroll;
-  z-index: -1;
+  z-index: 100;
   -webkit-overflow-scrolling: touch;
   position: absolute;
   right: 0;
@@ -123,7 +122,7 @@ export const HitsWrapper = styled.div`
 `
 
 export const PoweredBy = () => (
-  <span css="font-size: 0.6em; text-align: end; padding: 0;">
+  <span style={{ fontSize: '0.6em', textAlign: 'end', padding: 0 }}>
         Powered by{` `}
     <a href="https://algolia.com">
       <Algolia size="1em" /> Algolia

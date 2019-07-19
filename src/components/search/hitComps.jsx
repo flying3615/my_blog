@@ -4,6 +4,7 @@ import { Link } from 'gatsby'
 import { Calendar } from 'styled-icons/octicons/Calendar'
 import { Tags } from 'styled-icons/fa-solid/Tags'
 
+// clickHandler is setFocus(false) to close the result list and return a component
 export const PostHit = clickHandler => ({ hit }) => (
   <div>
     <Link to={`/blog` + hit.slug} onClick={clickHandler}>
@@ -28,3 +29,6 @@ export const PostHit = clickHandler => ({ hit }) => (
     <Snippet attribute="excerpt" hit={hit} tagName="mark" />
   </div>
 )
+
+// can export more things here
+// export const PageHit = clickHandler => ({ hit }) => ()

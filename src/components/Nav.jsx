@@ -2,20 +2,22 @@ import React from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
-import IconButton from '@material-ui/core/IconButton'
 import Typography from '@material-ui/core/Typography'
 import Button from '@material-ui/core/Button'
 import { graphql, useStaticQuery, Link } from 'gatsby'
 import window from 'global'
-
+import Search from './search'
 
 // Blog siteMap
 const sections = [
   { display: 'Home', path: '/' },
   { display: 'Blog', path: '/blog' },
   { display: 'About', path: '/about' },
-  { display: 'Files', path: '/my-files' },
-  { display: 'Search', path: '/searchResult?q=Yufei' }
+  { display: 'Files', path: '/my-files' }
+]
+
+const searchIndices = [
+  { name: `Posts`, title: `Blog Posts`, hitComp: `PostHit` }
 ]
 
 const useStyles = makeStyles(theme => ({
@@ -53,14 +55,14 @@ const useStyles = makeStyles(theme => ({
 export default () => {
   const data = useStaticQuery(
     graphql`
-            query {
-                site {
-                    siteMetadata {
-                        title
-                    }
-                }
-            }
-        `
+      query {
+        site {
+          siteMetadata {
+            title
+          }
+        }
+      }
+    `
   )
 
   const classes = useStyles()
@@ -82,11 +84,10 @@ export default () => {
             className={classes.toolbarTitle}
           >
             {data.site.siteMetadata.title}
-
           </Typography>
-          <Button variant="outlined" size="small">
-                        Sign up
-          </Button>
+
+          <Search collapse indices={searchIndices} />
+
         </Toolbar>
       </AppBar>
       <Toolbar component="nav" variant="dense" className={classes.toolbarSecondary}>
