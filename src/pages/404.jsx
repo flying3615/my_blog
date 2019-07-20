@@ -1,43 +1,45 @@
-import React from 'react'
-import Layout from '../container/Layout'
-import { makeStyles } from '@material-ui/core/styles'
-
-// https://codepen.io/salehriaz/pen/erJrZM
-
-const useStyles = makeStyles(theme => ({
-//   centralBody:{
-//   padding: 17% 5% 10% 5%;
-//   text-align: center;
-}))
+import React, {Fragment} from 'react'
+import NotFoundStyles from './404.module.css'
+import four0four from './img/404.svg'
+import rocket from './img/rocket.svg'
+import earth from './img/earth.svg'
+import moon from './img/moon.svg'
+import astronaut from './img/astronaut.svg'
 
 export default function NotFound () {
-  const classes = useStyles()
 
   return (
-    <Layout>
-      <div className={classes.centralBody}>
-        <img class="image-404" src="http://salehriaz.com/404Page/img/404.svg" width="300px" />
-        <a href="http://salehriaz.com/404Page/404.html" class="btn-go-home" target="_blank">GO BACK HOME</a>
+
+    <div className={NotFoundStyles.bgPurple}>
+      <div className={NotFoundStyles.centralBody}>
+        <img className={NotFoundStyles.image404} src={four0four} width="20%" />
+        <a href="/" className={NotFoundStyles.btnGoHome}>GO BACK HOME</a>
       </div>
-      <div class="objects">
-        <img class="object_rocket" src="http://salehriaz.com/404Page/img/rocket.svg" width="40px" />
-        <div class="earth-moon">
-          <img class="object_earth" src="http://salehriaz.com/404Page/img/earth.svg" width="100px" />
-          <img class="object_moon" src="http://salehriaz.com/404Page/img/moon.svg" width="80px" />
+      <div className={NotFoundStyles.objects}>
+        <img className={NotFoundStyles.objectRocket} src={rocket} width="2%" />
+        <div className={NotFoundStyles.earthMoon}>
+          <img className={NotFoundStyles.objectEarth} src={earth} width="8%" />
+          <img className={NotFoundStyles.objectMoon} src={moon} width="5%" />
         </div>
-        <div class="box_astronaut">
-          <img class="object_astronaut" src="http://salehriaz.com/404Page/img/astronaut.svg" width="140px" />
+        <div className={NotFoundStyles.boxAstronaut}>
+          <img className={NotFoundStyles.objectAstronaut} src={astronaut} width="100%" />
         </div>
       </div>
-      <div class="glowing_stars">
-        <div class="star"></div>
-        <div class="star"></div>
-        <div class="star"></div>
-        <div class="star"></div>
-        <div class="star"></div>
+      <div className={NotFoundStyles.glowingStars}>
+        <div className={NotFoundStyles.star}/>
+        <div className={NotFoundStyles.star}/>
+        <div className={NotFoundStyles.star}/>
+        <div className={NotFoundStyles.star}/>
+        <div className={NotFoundStyles.star}/>
+        <div className={NotFoundStyles.star}/>
+        <div className={NotFoundStyles.star}/>
+        <div className={NotFoundStyles.star}/>
+        <div className={NotFoundStyles.star}/>
+        <div className={NotFoundStyles.star}/>
 
       </div>
 
-    </Layout>
+    </div>
+
   )
 }
