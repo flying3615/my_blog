@@ -10,6 +10,7 @@ import CssBaseline from '@material-ui/core/CssBaseline'
 import { Root, HitsWrapper, PoweredBy } from './styles'
 import Input from './input'
 import * as hitComps from './hitComps'
+import Typography from '@material-ui/core/Typography'
 
 const Results = connectStateResults(
   ({ searchState: state, searchResults: res, children }) =>
@@ -59,7 +60,7 @@ export default function Search ({ indices, collapse, hitsAsGrid }) {
         {indices.map(({ name, title, hitComp }) => (
           <Index key={name} indexName={name}>
             <header>
-              <h3>{title}</h3>
+              <Typography gutterBottom variant="display" component="h2">{title}</Typography>
               <Stats />
             </header>
             <Results>

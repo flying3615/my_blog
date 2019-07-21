@@ -1,3 +1,4 @@
+// run `gatsby build` to rebuild the index in algolia
 const postQuery = `{
   posts: allMarkdownRemark {
     edges {

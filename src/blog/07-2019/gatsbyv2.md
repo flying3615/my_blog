@@ -2,7 +2,7 @@
 path: "/gatsby2"
 date: 2019-07-05
 title: "Gatsby V2"
-tags: ['gatsby','tech']
+tags: ['tech', 'gatsby']
 img: 'https://images.unsplash.com/photo-1562362258-46de36d55cef?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80'
 ---
 <p align="center" >

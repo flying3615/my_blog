@@ -19,7 +19,8 @@ export const HitsWrapper = styled.div`
   max-width: 30em;
   box-shadow: 0 0 5px 0;
   padding: 0.7em 1em 0.4em;
-  background: #757ce8;
+  background: #f7f5f2;
+  color: black;
   border-radius: 3px;
   > * + * {
     padding-top: 1em !important;
@@ -45,12 +46,6 @@ export const HitsWrapper = styled.div`
       color: white;
       padding: 0.1em 0.4em;
     }
-  }
-  h3 {
-    margin: 0 0 0.5em;
-  }
-  h4 {
-    margin-bottom: 0.3em;
   }
 `
 

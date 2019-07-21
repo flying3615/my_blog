@@ -2,6 +2,7 @@
 date: 2019-07-06
 title: "resume"
 tags: ['resume']
+path: "/resume"
 ---
 
 # Yufei Liu
@@ -13,7 +14,7 @@ E-mail: flying3615@163.com
 [Blog](https://flying3615.github.io)
 
 ## Self-assessment  
->I have more than 5 Years of experience in Java SE/Java EE development and design, including 3 years of huge-scale JAVA program development experience with solid knowledge of JAVA enterprise and JAVA core programming, including but not limit to Web server development expertise. I've served as a senior Java developer on a major project for Alcatel-Lucent Telecom Company(merged by Nokia now) with the main responsibilities of designing and architect new features requested by customer for the product which is a core network management system.
+>I have more than 8 Years of experience in Java SE/Java EE development and design, including 3 years of huge-scale JAVA program development experience with solid knowledge of JAVA enterprise and JAVA core programming, including but not limit to Web server development expertise. I've served as a senior Java developer on a major project for Alcatel-Lucent Telecom Company(merged by Nokia now) with the main responsibilities of designing and architect new features requested by customer for the product which is a core network management system.
 Currently, I'm severing to a relatively small but pretty dynamic and vibrant company which going to IPO.  
 My responsibilities include witting technical architecture document and monitoring projects schedules, as well as providing development guideline,etc.  
 Besides Java,  I am also a omnivorous developer and am familiar with Groovy, Python and Linux shell script language, as well as using front-side framework like Angular.JS, Javascript, and JQuery. 

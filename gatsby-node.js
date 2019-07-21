@@ -66,7 +66,7 @@ exports.createPages = ({ actions, graphql }) => {
             prev: index === 0 ? null : posts[index - 1].node,
             next: index === (posts.length - 1) ? null : posts[index + 1].node,
             tags: tags.sort(),
-            recommend: postsByTag[node.frontmatter.tags[0]]
+            recommend: postsByTag[node.frontmatter.tags[0]] //get recommend articles from the first tag name
           }
         })
       })
