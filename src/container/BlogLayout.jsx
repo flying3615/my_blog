@@ -57,8 +57,9 @@ export default function Template ({ data, pageContext }) {
           <Typography align="center" Typography variant="h3" gutterBottom>{post.frontmatter.title}</Typography>
 
           {tags.map(t => (
-            <Chip label={t} className={classes.chip} clickable component="a" href="/blog" />
+            <Chip label={t} className={classes.chip} clickable component="a" href={`/tags/${t}`} />
           ))}
+
           <Typography align="center" Typography variant="h6" gutterBottom>{post.timeToRead} mins to read</Typography>
           <Paper className={classes.blogPaper} dangerouslySetInnerHTML={{ __html: post.html }} />
         </Grid>

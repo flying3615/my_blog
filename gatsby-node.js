@@ -1,19 +1,19 @@
 const path = require('path')
 
-exports.createPages = ({ actions, graphql }) => {
-  const { createPage } = actions
+exports.createPages = ({actions, graphql}) => {
+	const {createPage} = actions
 
-  const aboutTemplate = path.resolve(`src/template/about.jsx`)
-  // create about page
-  createPage({
-    path: '/about',
-    component: aboutTemplate,
-    context: {
-      title: 'resume' // will be used as a graphql query variable in the component page
-    }
-  })
+	const aboutTemplate = path.resolve(`src/template/about.jsx`)
+	// create about page
+	createPage({
+		path: '/about',
+		component: aboutTemplate,
+		context: {
+			title: 'resume' // will be used as a graphql query variable in the component page
+		}
+	})
 
-  return graphql(`
+	return graphql(`
     {
       allMarkdownRemark(
         sort: { order: DESC, fields: [frontmatter___date] }
@@ -21,7 +21,7 @@ exports.createPages = ({ actions, graphql }) => {
       ) {
         edges {
           node {
-            excerpt(pruneLength: 50)
+            excerpt(pruneLength: 250)
             frontmatter {
               title
               path
@@ -33,57 +33,64 @@ exports.createPages = ({ actions, graphql }) => {
       }
     }
   `
-  ).then(result => {
-    if (result.errors) {
-      return Promise.reject(result.errors)
-    }
+	).then(result => {
+		if (result.errors) {
+			return Promise.reject(result.errors)
+		}
 
-    const posts = result.data.allMarkdownRemark.edges
+		const posts = result.data.allMarkdownRemark.edges
 
-    const postsByTag = {}
+		const postsByTag = {}
 
-    posts.forEach(({ node }) => {
-      if (node.frontmatter.tags) {
-        node.frontmatter.tags.forEach(tag => {
-          if (!postsByTag[tag]) {
-            postsByTag[tag] = []
-          }
-          postsByTag[tag].push(node)
-        })
-      }
-    })
+		posts.forEach(({node}) => {
+			if (node.frontmatter.tags) {
+				node.frontmatter.tags.forEach(tag => {
+					if (!postsByTag[tag]) {
+						postsByTag[tag] = []
+					}
+					postsByTag[tag].push(node)
+				})
+			}
+		})
 
-    const tags = Object.keys(postsByTag)
-    const blogPostTemplate = path.resolve(`src/container/BlogLayout.jsx`)
+		const tags = Object.keys(postsByTag)
+		const blogPostTemplate = path.resolve(`src/container/BlogLayout.jsx`)
 
-    posts.filter(({ node }) => node.frontmatter.path)
-      .forEach(({ node }, index) => {
-        createPage({
-          path: node.frontmatter.path,
-          component: blogPostTemplate,
-          context: {
-            pathSlug: node.frontmatter.path,
-            prev: index === 0 ? null : posts[index - 1].node,
-            next: index === (posts.length - 1) ? null : posts[index + 1].node,
-            tags: tags.sort(),
-            recommend: postsByTag[node.frontmatter.tags[0]] //get recommend articles from the first tag name
-          }
-        })
-      })
+		posts.filter(({node}) => node.frontmatter.path)
+			.forEach(({node}, index) => {
+				createPage({
+					path: node.frontmatter.path,
+					component: blogPostTemplate,
+					context: {
+						pathSlug: node.frontmatter.path,
+						prev: index === 0 ? null : posts[index - 1].node,
+						next: index === (posts.length - 1) ? null : posts[index + 1].node,
+						tags: node.frontmatter.tags,
+						recommend: postsByTag[node.frontmatter.tags[0]] //get recommend articles from the first tag name
+					}
+				})
+			})
 
-    // create tags
-    // tags.forEach(tagName => {
+		const singleTagIndexTemplate = path.resolve(`src/container/BlogsByTag.jsx`)
 
-    //   const posts = postsByTag[tagName]
-
-    //   createPage({
-    //     path: `/tags/${tagName}`,
-    //     component: singleTagIndexTemplate,
-    //     context: {
-    //       posts,
-    //       tagName
-    //     }
-    //   })
-    // })
-  })
+		// create tags
+		tags.forEach(tagName => {
+			const posts = postsByTag[tagName].map(p => ({
+				title: p.frontmatter.title,
+				excerpt: p.excerpt,
+				tags: p.frontmatter.tags,
+				img: p.frontmatter.img,
+				id: p.frontmatter.path,
+				path: p.frontmatter.path
+			}))
+			createPage({
+				path: `/tags/${tagName}`,
+				component: singleTagIndexTemplate,
+				context: {
+					posts,
+					tagName
+				}
+			})
+		})
+	})
 }

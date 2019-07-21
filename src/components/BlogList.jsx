@@ -6,7 +6,9 @@ import Typography from '@material-ui/core/Typography'
 import { makeStyles } from '@material-ui/core/styles'
 import Grid from '@material-ui/core/Grid'
 import { Container, Avatar } from '@material-ui/core'
-const useStyles = makeStyles({
+
+
+const useStyles = makeStyles(theme => ({
 
   cardAction: {
     padding: 20,
@@ -33,20 +35,29 @@ const useStyles = makeStyles({
 
   avatar: {
     margin: 10
-  }
-})
+  },
+
+	paper: {
+		padding: theme.spacing(2),
+		textAlign: 'center',
+		color: theme.palette.text.secondary,
+	},
+}))
+
 export default function BlogList ({ posts }) {
+
   const classes = useStyles()
 
   return (
-    <Container maxWidth="md">
+    <Container maxWidth="lg">
+
       <Grid container spacing={6}>
         {posts
           .filter(post => post.title.length > 0)
           .map((post) => {
             return (
-              <Grid item xs={12} key={post.id}>
-                <Paper href={post.path} className={classes.cardAction}>
+              <Grid item>
+                <Paper href={post.path} className={classes.cardAction} key={post.id}>
                   <Link to={post.path} className={classes.link}>
 
                     <Grid container spacing={2}>
@@ -57,14 +68,14 @@ export default function BlogList ({ posts }) {
                       </Grid>
 
                       <Grid item>
-                        <Typography variant="body1" color="textSecondary" component="p">
+                        <Typography variant="body1" color="textSecondary" component="h6">
                           {post.excerpt}
                         </Typography>
                       </Grid>
 
                       <Grid item xs={12} style={{ display: 'flex', alignItems: 'center' }}>
                         <Avatar src={post.img} className={classes.avatar} />
-                        <Typography gutterBottom variant="subtitle1" color='textSecondary'>on {post.date}</Typography>
+                        {post.date && <Typography gutterBottom variant="subtitle1" color='textSecondary'>on {post.date}</Typography>}
                       </Grid>
                       
                     </Grid>
@@ -73,7 +84,9 @@ export default function BlogList ({ posts }) {
               </Grid>
             )
           })}
-      </Grid>
+
+        </Grid>
+
     </Container>
   )
 }
