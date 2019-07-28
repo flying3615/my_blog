@@ -39,7 +39,6 @@ exports.createPages = ({actions, graphql}) => {
 		}
 
 		const posts = result.data.allMarkdownRemark.edges
-
 		const postsByTag = {}
 
 		posts.forEach(({node}) => {
@@ -53,7 +52,23 @@ exports.createPages = ({actions, graphql}) => {
 			}
 		})
 
+
 		const tags = Object.keys(postsByTag)
+
+		const blogPageTemplate = path.resolve(`src/container/BlogPage.jsx`)
+
+		createPage({
+			path: `/blog`,
+			component: blogPageTemplate,
+			context: {
+				posts,
+				tags
+			}
+		})
+
+
+
+		//
 		const blogPostTemplate = path.resolve(`src/container/BlogLayout.jsx`)
 
 		posts.filter(({node}) => node.frontmatter.path)
@@ -71,9 +86,9 @@ exports.createPages = ({actions, graphql}) => {
 				})
 			})
 
+		// create tags
 		const singleTagIndexTemplate = path.resolve(`src/container/BlogsByTag.jsx`)
 
-		// create tags
 		tags.forEach(tagName => {
 			const posts = postsByTag[tagName].map(p => ({
 				title: p.frontmatter.title,

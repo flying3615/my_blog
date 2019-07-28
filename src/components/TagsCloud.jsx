@@ -1,6 +1,7 @@
 import TagCloud from 'react-tag-cloud';
 import randomColor from 'randomcolor';
 import React from 'react'
+import { Link } from 'gatsby'
 
 export default function BlogsByTag({tags}) {
 
@@ -16,7 +17,7 @@ export default function BlogsByTag({tags}) {
 					width: '100%',
 					height: '100%'
 				}}>
-				{tags.map(tag=>(<div>{tag}</div>))}
+				{tags.map(tag=>(<Link to={`/tags/${tag}`}>{tag}</Link>))}
 			</TagCloud>
 		)
 }
