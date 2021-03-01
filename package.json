@@ -23,7 +23,7 @@
     "global": "^4.4.0",
     "js-search": "^1.4.3",
     "material-design-icons": "^3.0.1",
-    "prismjs": "^1.16.0",
+    "prismjs": "^1.23.0",
     "randomcolor": "^0.5.4",
     "react": "latest",
     "react-dom": "latest",
